@@ -39,4 +39,12 @@ public class Address {
         return address;
     }
 
+    @Override
+    public String toString() {
+        return "Address{" +
+                "city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", number='" + number + '\'' +
+                '}';
+    }
 }

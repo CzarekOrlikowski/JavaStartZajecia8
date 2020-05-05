@@ -3,16 +3,11 @@ package zadanie3;
 public class Client {
     private String name;
     private Address address;
-    private String type;
     private boolean premium;
 
-    public static String TYPE_COMPANY = "Company";
-    public static String TYPE_CONSUMER = "Consumer";
-
-    public Client(String name, Address address, String type, boolean premium) {
+    public Client(String name, Address address, boolean premium) {
         this.name = name;
         this.address = address;
-        this.type = type;
         this.premium = premium;
     }
 
@@ -32,14 +27,6 @@ public class Client {
         this.address = address;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public boolean getPremium() {
         return premium;
     }
@@ -48,9 +35,21 @@ public class Client {
         this.premium = premium;
     }
 
-    public static String getTypeCompany() {
-        return TYPE_COMPANY;
+    public Bill documentCreator(Product product) {
+        Double finalPrice;
+        if (getPremium()) {
+            finalPrice = 0.9 * product.getPrice();
+        } else finalPrice = product.getPrice();
+        return new Bill(product.getName(), product.getOrigin(), product.getPrice(), finalPrice);
     }
 
+    @Override
+    public String toString() {
+        return "Client{" +
+                "name='" + name + '\'' +
+                ", address=" + address +
+                ", premium=" + premium +
+                '}';
+    }
 }
 

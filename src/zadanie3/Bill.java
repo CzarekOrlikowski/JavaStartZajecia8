@@ -49,14 +49,6 @@ public class Bill {
         this.finalPrice = finalPrice;
     }
 
-    public Bill documentCreator(Product product, Client client) {
-        if (client.getPremium()) {
-            finalPrice = 0.9 * product.getPrice();
-        } else finalPrice = product.getPrice();
-        return new Bill(productName = product.getName(), productOrigin = product.getOrigin(), basePrice = product.getPrice(), finalPrice);
-
-    }
-
     public String documentInfo() {
         return "Dokument księgowy \n" +
                 "Nazwa produktu: " + productName + "\n" +
@@ -65,4 +57,13 @@ public class Bill {
                 "Cena końcowa: " + finalPrice + "\n";
     }
 
+    @Override
+    public String toString() {
+        return "Bill{" +
+                "productName='" + productName + '\'' +
+                ", productOrigin='" + productOrigin + '\'' +
+                ", basePrice=" + basePrice +
+                ", finalPrice=" + finalPrice +
+                '}';
+    }
 }

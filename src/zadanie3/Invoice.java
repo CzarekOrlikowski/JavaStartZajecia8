@@ -18,15 +18,6 @@ public class Invoice extends Bill {
 
     }
 
-    public Invoice documentCreator(Product product, Client client) {
-        if (client.getPremium()) {
-            finalPrice = 0.9 * product.getPrice();
-        } else finalPrice = product.getPrice();
-        return new Invoice(productName = product.getName(), productOrigin = product.getOrigin(), basePrice = product.getPrice(),
-                finalPrice, clientName = client.getName(), city = client.getAddress().getCity(), street = client.getAddress().getStreet(),
-                number = client.getAddress().getNumber());
-    }
-
     @Override
     public String documentInfo() {
         return super.documentInfo() +
@@ -34,5 +25,19 @@ public class Invoice extends Bill {
                 "Miejcowość: " + city + "\n" +
                 "Ulica: " + street + "\n" +
                 "Numer: " + number;
+    }
+
+    @Override
+    public String toString() {
+        return "Invoice{" +
+                "clientName='" + clientName + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", number='" + number + '\'' +
+                ", productName='" + productName + '\'' +
+                ", productOrigin='" + productOrigin + '\'' +
+                ", basePrice=" + basePrice +
+                ", finalPrice=" + finalPrice +
+                '}';
     }
 }
